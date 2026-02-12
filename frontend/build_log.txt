@@ -1,0 +1,2 @@
+src/App.tsx(2,75): error TS6133: 'Chip' is declared but its value is never read.
+src/App.tsx(7,1): error TS6133: 'WarningIcon' is declared but its value is never read.

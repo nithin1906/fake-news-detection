@@ -1,0 +1,15 @@
+
+flask
+flask-cors
+transformers
+torch
+numpy
+scikit-learn
+shap
+lime
+pymongo
+newspaper3k
+beautifulsoup4
+python-dotenv
+requests
+pytest
