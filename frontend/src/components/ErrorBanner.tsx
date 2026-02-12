@@ -11,7 +11,7 @@ export default function ErrorBanner({ message }: ErrorBannerProps) {
           <span className="text-editorial-red font-serif text-lg mt-0.5">{'\u2716'}</span>
           <div>
             <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-editorial-red block mb-1">
-              Error de Analisis
+              Analysis Error
             </span>
             <p className="font-sans text-sm text-ink/80 italic">
               {message}

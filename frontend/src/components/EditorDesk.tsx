@@ -28,7 +28,7 @@ export default function EditorDesk({ tab, setTab, input, setInput, loading, onSu
 
   return (
     <section
-      id="verificar"
+      id="verify"
       className={`max-w-3xl mx-auto px-4 mb-16 transition-all duration-700 ease-out ${
         visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
       }`}
@@ -36,7 +36,7 @@ export default function EditorDesk({ tab, setTab, input, setInput, loading, onSu
       {/* Section label */}
       <div className="text-center mb-6">
         <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-aged-gold">
-          {'Mesa del Editor'}
+          {"The Editor's Desk"}
         </span>
       </div>
 
@@ -61,7 +61,7 @@ export default function EditorDesk({ tab, setTab, input, setInput, loading, onSu
               }
             `}
           >
-            {'Pegar Texto'}
+            {'Paste Text'}
             {tab === 'text' && (
               <span className="absolute bottom-0 left-[10%] right-[10%] h-[3px] bg-editorial-red animate-underline-grow origin-left" />
             )}
@@ -79,7 +79,7 @@ export default function EditorDesk({ tab, setTab, input, setInput, loading, onSu
               }
             `}
           >
-            {'Analizar URL'}
+            {'Analyze URL'}
             {tab === 'url' && (
               <span className="absolute bottom-0 left-[10%] right-[10%] h-[3px] bg-editorial-red animate-underline-grow origin-left" />
             )}
@@ -96,10 +96,10 @@ export default function EditorDesk({ tab, setTab, input, setInput, loading, onSu
               onFocus={() => setFocused(true)}
               onBlur={() => setFocused(false)}
               onKeyDown={handleKeyDown}
-              placeholder="Pegue el texto del articulo aqui..."
+              placeholder="Paste the article text here..."
               rows={7}
               className="w-full bg-transparent border border-warm-gray/25 p-5 font-sans text-base leading-relaxed placeholder:text-warm-gray/40 placeholder:italic focus:outline-none focus:border-warm-gray/60 resize-y transition-colors duration-300"
-              aria-label="Texto del articulo"
+              aria-label="Article text"
             />
           ) : (
             <input
@@ -110,9 +110,9 @@ export default function EditorDesk({ tab, setTab, input, setInput, loading, onSu
               onFocus={() => setFocused(true)}
               onBlur={() => setFocused(false)}
               onKeyDown={handleKeyDown}
-              placeholder="https://ejemplo.com/articulo"
+              placeholder="https://example.com/article"
               className="w-full bg-transparent border border-warm-gray/25 p-5 font-sans text-base placeholder:text-warm-gray/40 placeholder:italic focus:outline-none focus:border-warm-gray/60 transition-colors duration-300"
-              aria-label="URL del articulo"
+              aria-label="Article URL"
             />
           )}
 
@@ -120,11 +120,11 @@ export default function EditorDesk({ tab, setTab, input, setInput, loading, onSu
           <div className="flex items-center justify-between mt-3">
             <span className="text-[10px] text-warm-gray/50 font-bold uppercase tracking-wider">
               {tab === 'text'
-                ? `${input.length} caracteres`
-                : input ? 'URL ingresada' : 'Ingrese una URL valida'}
+                ? `${input.length} characters`
+                : input ? 'URL entered' : 'Enter a valid URL'}
             </span>
             <span className="text-[10px] text-warm-gray/40 hidden md:block">
-              {'Ctrl + Enter para analizar'}
+              {'Ctrl + Enter to analyze'}
             </span>
           </div>
 
@@ -134,7 +134,7 @@ export default function EditorDesk({ tab, setTab, input, setInput, loading, onSu
               onClick={onSubmit}
               disabled={loading || !input.trim()}
               className="group relative bg-editorial-red text-parchment-light hover:brightness-110 active:scale-[0.98] transition-all duration-300 px-12 py-4 text-[12px] font-bold tracking-[0.25em] uppercase disabled:opacity-40 disabled:cursor-not-allowed overflow-hidden"
-              aria-label="Analizar credibilidad"
+              aria-label="Analyze credibility"
             >
               {/* Hover fill effect */}
               <span className="absolute inset-0 bg-ink/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
@@ -143,10 +143,10 @@ export default function EditorDesk({ tab, setTab, input, setInput, loading, onSu
                 {loading ? (
                   <>
                     <span className="inline-block w-4 h-4 border-2 border-parchment/30 border-t-parchment rounded-full animate-spin" />
-                    {'Analizando...'}
+                    {'Analyzing...'}
                   </>
                 ) : (
-                  'Analizar Credibilidad'
+                  'Analyze Credibility'
                 )}
               </span>
             </button>

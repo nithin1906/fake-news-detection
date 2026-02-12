@@ -32,7 +32,7 @@ export default function XAIHeatmap({ wordImportances }: XAIHeatmapProps) {
           {word}
           {hoveredIndex === index && (
             <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-ink text-parchment text-[10px] px-2 py-1 whitespace-nowrap z-10 font-bold tracking-wider">
-              {importance > 0 ? 'Sospechoso' : 'Creible'}: {Math.abs(importance).toFixed(3)}
+              {importance > 0 ? 'Suspicious' : 'Credible'}: {Math.abs(importance).toFixed(3)}
             </span>
           )}
         </span>

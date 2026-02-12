@@ -19,17 +19,17 @@ export default function Hero() {
         <div className="flex items-center justify-center gap-3 mb-6">
           <div className="h-px w-8 bg-editorial-red" />
           <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-editorial-red">
-            Verificacion de Noticias
+            News Verification
           </span>
           <div className="h-px w-8 bg-editorial-red" />
         </div>
 
         {/* Main editorial headline */}
         <h2 className="font-serif text-4xl md:text-6xl lg:text-7xl font-black text-ink leading-[0.95] mb-6 text-balance">
-          {'Es verdadera'}
+          {'Is this news'}
           <br />
           <span className="relative inline-block">
-            {'esta noticia?'}
+            {'story true?'}
             {/* Animated underline accent */}
             <span
               className={`absolute -bottom-2 left-0 h-[3px] bg-editorial-red transition-all duration-1000 ease-out delay-700 ${
@@ -45,7 +45,7 @@ export default function Hero() {
             visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`}
         >
-          {'Deteccion impulsada por IA con analisis explicable. Nuestra inteligencia artificial examina cada palabra para proteger la verdad.'}
+          {'AI-powered detection with explainable analysis. Our artificial intelligence examines every word to protect the truth.'}
         </p>
 
         {/* Feature badges */}
@@ -54,7 +54,7 @@ export default function Hero() {
             visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`}
         >
-          {['Analisis Semantico', 'Verificacion de Fuentes', 'IA Explicable'].map((badge) => (
+          {['Semantic Analysis', 'Source Verification', 'Explainable AI'].map((badge) => (
             <span
               key={badge}
               className="inline-flex items-center gap-1.5 px-3 py-1 border border-warm-gray/30 text-[10px] font-bold uppercase tracking-[0.15em] text-warm-gray hover:border-editorial-red hover:text-editorial-red transition-colors duration-300"

@@ -70,22 +70,22 @@ export default function ResultsSection({ result }: ResultsSectionProps) {
 
   const analysisPoints = [
     {
-      title: 'Analisis Linguistico',
+      title: 'Linguistic Analysis',
       description: isFake
-        ? 'El texto presenta patrones linguisticos frecuentemente asociados con contenido manipulado, incluyendo lenguaje emocional excesivo y afirmaciones absolutas.'
-        : 'El texto muestra patrones linguisticos consistentes con periodismo profesional, con tono equilibrado y fuentes citadas.',
+        ? 'The text exhibits linguistic patterns frequently associated with manipulated content, including excessive emotional language and absolute claims.'
+        : 'The text shows linguistic patterns consistent with professional journalism, with a balanced tone and cited sources.',
     },
     {
-      title: 'Patron Semantico',
+      title: 'Semantic Pattern',
       description: isFake
-        ? 'Se detectaron multiples indicadores de contenido sensacionalista y tecnicas de desinformacion conocidas.'
-        : 'La estructura semantica es coherente y sigue los estandares de redaccion periodistica reconocidos.',
+        ? 'Multiple indicators of sensationalist content and known misinformation techniques were detected.'
+        : 'The semantic structure is coherent and follows recognized journalistic writing standards.',
     },
     {
-      title: 'Indicadores de Confianza',
+      title: 'Confidence Indicators',
       description: isFake
-        ? 'El nivel de confianza del analisis sugiere una alta probabilidad de que el contenido sea enganoso o fabricado.'
-        : 'Los indicadores de confianza senalan que el contenido es probablemente autentico y verificable.',
+        ? 'The analysis confidence level suggests a high probability that the content is misleading or fabricated.'
+        : 'Confidence indicators suggest the content is likely authentic and verifiable.',
     },
   ];
 
@@ -99,7 +99,7 @@ export default function ResultsSection({ result }: ResultsSectionProps) {
       <div className="flex items-center gap-4 mb-8">
         <div className="flex-1 h-px bg-warm-gray/30" />
         <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-aged-gold">
-          Resultados del Analisis
+          Analysis Results
         </span>
         <div className="flex-1 h-px bg-warm-gray/30" />
       </div>
@@ -122,8 +122,8 @@ export default function ResultsSection({ result }: ResultsSectionProps) {
             <span className={`text-lg md:text-xl font-black tracking-[0.4em] uppercase ${
               isFake ? 'text-editorial-red' : 'text-green-900'
             }`}>
-              {'VEREDICTO: '}
-              {isFake ? 'SOSPECHOSO' : 'CREIBLE'}
+              {'VERDICT: '}
+              {isFake ? 'SUSPICIOUS' : 'CREDIBLE'}
             </span>
           </div>
         </div>
@@ -141,7 +141,7 @@ export default function ResultsSection({ result }: ResultsSectionProps) {
         <div className="md:col-span-4 md:pr-8 md:border-r md:border-warm-gray/20">
           <div className="text-center pt-2">
             <span className="section-header inline-block border-none pb-0 mb-3">
-              Puntuacion de Credibilidad
+              Credibility Score
             </span>
 
             <div className="my-4">
@@ -151,19 +151,19 @@ export default function ResultsSection({ result }: ResultsSectionProps) {
             <ConfidenceBar value={score} isFake={isFake} />
 
             <p className="text-[10px] uppercase tracking-widest text-warm-gray mt-3">
-              {'Nivel de confianza: '}
-              {score > 80 ? 'Muy Alto' : score > 60 ? 'Alto' : score > 40 ? 'Moderado' : 'Bajo'}
+              {'Confidence level: '}
+              {score > 80 ? 'Very High' : score > 60 ? 'High' : score > 40 ? 'Moderate' : 'Low'}
             </p>
           </div>
 
           {/* Executive summary */}
           <div className="mt-8 pt-6 border-t border-warm-gray/20">
-            <h3 className="section-header">Resumen Ejecutivo</h3>
+            <h3 className="section-header">Executive Summary</h3>
             <p className="font-sans text-sm leading-relaxed text-ink/80 drop-cap">
               {result.explanation_summary ||
                 (isFake
-                  ? 'El analisis indica que este contenido presenta caracteristicas consistentes con desinformacion. Se recomienda verificar con fuentes adicionales antes de compartir.'
-                  : 'El analisis indica que este contenido presenta caracteristicas consistentes con periodismo profesional y verificable.'
+                  ? 'The analysis indicates that this content exhibits characteristics consistent with misinformation. It is recommended to verify with additional sources before sharing.'
+                  : 'The analysis indicates that this content exhibits characteristics consistent with professional and verifiable journalism.'
                 )}
             </p>
           </div>
@@ -178,17 +178,17 @@ export default function ResultsSection({ result }: ResultsSectionProps) {
           {/* Heatmap */}
           <div className="mb-10">
             <h3 className="font-serif text-2xl font-bold mb-1 text-ink">
-              {'Analisis de Inteligencia Artificial'}
+              {'Artificial Intelligence Analysis'}
             </h3>
             <div className="h-[2px] bg-ink mb-6" />
 
             <div className="mb-8">
-              <h4 className="section-header">Mapa de Calor Semantico</h4>
+              <h4 className="section-header">Semantic Heatmap</h4>
               <div className="bg-parchment-light border border-warm-gray/15 p-5 md:p-6">
                 <XAIHeatmap wordImportances={result.word_importances} />
               </div>
               <p className="text-[10px] text-warm-gray mt-2 italic">
-                {'Rojo indica contribucion a "sospechoso", verde indica contribucion a "creible". Intensidad proporcional a importancia.'}
+                {'Red indicates contribution to "suspicious", green indicates contribution to "credible". Intensity proportional to importance.'}
               </p>
             </div>
           </div>

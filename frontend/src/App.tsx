@@ -22,14 +22,14 @@ function App() {
 
     if (tab === 'url') {
       if (!input.match(/^(http|https):\/\/[^ "]+$/)) {
-        setError('Por favor ingrese una URL valida que comience con http:// o https://')
+        setError('Please enter a valid URL starting with http:// or https://')
         setLoading(false)
         return
       }
     }
 
     if (tab === 'text' && input.trim().length < 20) {
-      setError('Por favor ingrese al menos 20 caracteres de texto para un analisis confiable.')
+      setError('Please enter at least 20 characters of text for a reliable analysis.')
       setLoading(false)
       return
     }
@@ -39,7 +39,7 @@ function App() {
       const response = await checkArticle(isUrl ? undefined : input, isUrl ? input : undefined)
       setResult(response)
     } catch (err: any) {
-      const errorMessage = err.response?.data?.error || 'Error al analizar. Por favor intente de nuevo.'
+      const errorMessage = err.response?.data?.error || 'Analysis failed. Please try again.'
       setError(errorMessage)
       console.error(err)
     } finally {

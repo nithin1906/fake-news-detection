@@ -1,19 +1,19 @@
 import { useEffect, useState } from 'react';
 
 const NAV_LINKS = [
-  { label: 'INICIO', href: '#top', active: false },
-  { label: 'VERIFICAR', href: '#verificar', active: true },
-  { label: 'ACERCA DE', href: '#acerca', active: false },
-  { label: 'METODOLOGIA', href: '#metodologia', active: false },
+  { label: 'HOME', href: '#top', active: false },
+  { label: 'VERIFY', href: '#verify', active: true },
+  { label: 'ABOUT', href: '#about', active: false },
+  { label: 'METHODOLOGY', href: '#methodology', active: false },
 ];
 
 const TICKER_ITEMS = [
-  'La verdad es el fundamento de la democracia',
-  'Verificacion impulsada por inteligencia artificial',
-  'Analisis semantico en tiempo real',
-  'Protegiendo la integridad informativa',
-  'Transparencia y confianza editorial',
-  'Combatiendo la desinformacion digital',
+  'Truth is the foundation of democracy',
+  'AI-powered news verification',
+  'Real-time semantic analysis',
+  'Protecting information integrity',
+  'Editorial transparency and trust',
+  'Combating digital misinformation',
 ];
 
 export default function Masthead() {
@@ -24,7 +24,7 @@ export default function Masthead() {
     return () => clearTimeout(timer);
   }, []);
 
-  const today = new Date().toLocaleDateString('es-ES', {
+  const today = new Date().toLocaleDateString('en-US', {
     weekday: 'long',
     year: 'numeric',
     month: 'long',
@@ -60,10 +60,10 @@ export default function Masthead() {
             {formattedDate}
           </span>
           <span className="text-[10px] uppercase tracking-[0.25em] font-bold text-warm-gray hidden md:block">
-            {'Ano I'} {'\u2014'} {'No. 001'}
+            {'Year I'} {'\u2014'} {'No. 001'}
           </span>
           <span className="text-[10px] uppercase tracking-[0.25em] font-bold text-warm-gray hidden md:block">
-            {'Edicion Digital'}
+            {'Digital Edition'}
           </span>
         </div>
 
@@ -81,7 +81,7 @@ export default function Masthead() {
             TrueSight
           </h1>
           <p className="font-sans text-sm md:text-base text-warm-gray italic mt-2 tracking-wide">
-            {'La voz de la verdad en la era digital'}
+            {'The voice of truth in the digital age'}
           </p>
         </div>
 
