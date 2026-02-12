@@ -1,45 +1,42 @@
+import { useState } from 'react';
+
 interface XAIHeatmapProps {
-    wordImportances: [string, number][]; // Array of [word, importance]
+  wordImportances: [string, number][];
 }
 
-const XAIHeatmap = ({ wordImportances }: XAIHeatmapProps) => {
-    // Helper to normalize importance for opacity/color intensity
-    const getBackgroundColor = (importance: number) => {
-        // Importance is between -1 and 1 usually, or unbounded.
-        // For this MVP, let's assume -1 (Real) to 1 (Fake).
-        // Or magnitude.
+export default function XAIHeatmap({ wordImportances }: XAIHeatmapProps) {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-        // Simple visualization:
-        // Red for Fake (positive importance), Green for Real (negative importance)
-        // Opacity based on absolute value.
+  const getBackgroundColor = (importance: number) => {
+    const absValue = Math.min(Math.abs(importance), 1);
+    if (importance > 0) {
+      return `rgba(139, 26, 26, ${absValue * 0.55 + 0.08})`;
+    } else {
+      return `rgba(21, 128, 61, ${absValue * 0.55 + 0.08})`;
+    }
+  };
 
-        const absValue = Math.min(Math.abs(importance), 1);
-
-        if (importance > 0) {
-            // Contributing to Fake (Red - Editorial Red #8B1A1A is rgb(139, 26, 26))
-            return `rgba(139, 26, 26, ${absValue * 0.5 + 0.1})`;
-        } else {
-            // Contributing to Real (Green - using a deep green #15803d is rgb(21, 128, 61))
-            return `rgba(21, 128, 61, ${absValue * 0.5 + 0.1})`;
-        }
-    };
-
-    return (
-        <div className="font-serif text-lg leading-relaxed text-ink text-justify">
-            {wordImportances.map(([word, importance], index) => (
-                <span
-                    key={index}
-                    title={`Importancia: ${importance.toFixed(3)}`}
-                    className="inline-block px-0.5 rounded mx-0.5 cursor-help transition-colors border-b border-transparent hover:border-warm-gray/50"
-                    style={{
-                        backgroundColor: getBackgroundColor(importance),
-                    }}
-                >
-                    {word}
-                </span>
-            ))}
-        </div>
-    );
-};
-
-export default XAIHeatmap;
+  return (
+    <div className="font-sans text-base leading-[1.85] text-ink text-justify">
+      {wordImportances.map(([word, importance], index) => (
+        <span
+          key={index}
+          onMouseEnter={() => setHoveredIndex(index)}
+          onMouseLeave={() => setHoveredIndex(null)}
+          className="inline-block px-0.5 mx-[1px] cursor-help transition-all duration-200 border-b border-transparent hover:border-warm-gray/60 relative"
+          style={{
+            backgroundColor: getBackgroundColor(importance),
+            transform: hoveredIndex === index ? 'translateY(-1px)' : 'none',
+          }}
+        >
+          {word}
+          {hoveredIndex === index && (
+            <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-ink text-parchment text-[10px] px-2 py-1 whitespace-nowrap z-10 font-bold tracking-wider">
+              {importance > 0 ? 'Sospechoso' : 'Creible'}: {Math.abs(importance).toFixed(3)}
+            </span>
+          )}
+        </span>
+      ))}
+    </div>
+  );
+}
